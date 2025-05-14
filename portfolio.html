@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Serenity | Portfolio</title>
+
+  <!-- Link to Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* General body styling */
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #fafaf9;
+      color: #0e0e0e;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styling */
+    header {
+      background-color: #dfd9d9;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    /* Portfolio section wrapper */
+    .portfolio-section {
+      padding: 60px 5% 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .portfolio-section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Filter buttons styling */
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .filter-buttons button {
+      background-color: #d8d1d1;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    /* Active/hover states for filter buttons */
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background-color: #bba9a9;
+      color: #fff;
+    }
+
+    /* Grid layout for portfolio items */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    /* Individual portfolio item styling */
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.4s ease;
+    }
+
+    /* Image styling inside portfolio items */
+    .portfolio-item img {
+      width: 100%;
+      display: block;
+      transition: 0.5s ease;
+    }
+
+    /* Image hover effect: scale and darken */
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(80%);
+    }
+
+    /* Overlay that appears on hover */
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s ease;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Make overlay visible on hover */
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    /* Overlay heading styling */
+    .portfolio-overlay h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Overlay paragraph text */
+    .portfolio-overlay p {
+      font-size: 0.95rem;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #dfd9d9;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page header -->
+  <header>
+    <h1>Serenity Portfolio</h1>
+  </header>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio-section">
+    <h2>Our Latest Projects</h2>
+
+    <!-- Filter buttons for categories -->
+    <div class="filter-buttons">
+      <button class="active" onclick="filterSelection('all')">All</button>
+      <button onclick="filterSelection('living')">Living Rooms</button>
+      <button onclick="filterSelection('bedroom')">Bedrooms</button>
+      <button onclick="filterSelection('kitchen')">Kitchens</button>
+      <button onclick="filterSelection('outdoor')">Outdoor</button>
+    </div>
+
+    <!-- Portfolio grid container -->
+    <div class="portfolio-grid">
+      <!-- Portfolio item: Living Room -->
+      <div class="portfolio-item living">
+        <img src="img/img/portfolio living room.jpeg" alt="Luxury Living Room">
+        <div class="portfolio-overlay">
+          <h3>Luxury Living Room</h3>
+          <p>Modern neutrals with bespoke furnishing</p>
+        </div>
+      </div>
+
+      <!-- Portfolio item: Bedroom -->
+      <div class="portfolio-item bedroom">
+        <img src="img/img/portfolio bedroom.jpeg" alt="Minimalist Bedroom">
+        <div class="portfolio-overlay">
+          <h3>Minimalist Bedroom</h3>
+          <p>Soft hues & clean lines for restful spaces</p>
+        </div>
+      </div>
+
+      <!-- Portfolio item: Kitchen -->
+      <div class="portfolio-item kitchen">
+        <img src="img/img/kitchen portfolio.jpeg" alt="Kitchen Remodel">
+        <div class="portfolio-overlay">
+          <h3>Kitchen Remodel</h3>
+          <p>Neutral palettes with wood accents</p>
+        </div>
+      </div>
+
+      <!-- Portfolio item: Outdoor -->
+      <div class="portfolio-item outdoor">
+        <img src="img/img/portfolio outdoor.jpeg" alt="Outdoor Oasis">
+        <div class="portfolio-overlay">
+          <h3>Outdoor Oasis</h3>
+          <p>Serene patios and garden sanctuaries</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Serenity Interiors. All rights reserved.
+  </footer>
+
+  <script>
+    // Function to filter portfolio items by category
+    function filterSelection(category) {
+      let items = document.getElementsByClassName("portfolio-item");
+      
+      // If 'all' is selected, show all items
+      if (category === "all") category = "";
+
+      // Loop through portfolio items and toggle visibility based on selected category
+      for (let i = 0; i < items.length; i++) {
+        items[i].style.display = items[i].className.indexOf(category) > -1 ? "block" : "none";
+      }
+
+      // Remove 'active' class from all buttons
+      let buttons = document.querySelectorAll(".filter-buttons button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      // Add 'active' class to the clicked button
+      event.target.classList.add("active");
+    }
+
+    // Show all items by default when page loads
+    filterSelection("all");
+  </script>
+
+</body>
+</html>

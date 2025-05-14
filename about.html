@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Serenity</title>
+
+  <!-- ====== Embedded CSS Styling ====== -->
+  <style>
+    /* Reset default margins and paddings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #666;
+      transition: color 0.3s;
+      font-size: 16px;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #b28c5e;
+    }
+
+    /* About Section */
+    .about-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #2e2e2e;
+    }
+
+    .section-description {
+      text-align: center;
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 50px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image {
+      flex: 1;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      color: #444;
+    }
+
+    /* Footer Styling */
+    footer {
+      margin-top: 60px;
+      padding: 20px 0;
+      background-color: #ffffff;
+      text-align: center;
+      color: #999;
+      font-size: 14px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.03);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== Navigation Bar ====== -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">Serenity</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="watch.html">Watch</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ====== Main About Section ====== -->
+  <main>
+    <section class="about-section">
+      <h1 class="section-title">About Serenity</h1>
+      <p class="section-description">
+        Welcome to Serenity — your destination for calm, elegant, and effortlessly modern interior spaces.
+      </p>
+
+      <div class="about-content">
+        <!-- About Image -->
+        <img src="img/img/download.jpeg" alt="About Serenity" class="about-image">
+
+        <!-- About Text -->
+        <div class="about-text">
+          <p>
+            At Serenity, we design interiors that blend natural elements, soft neutral tones, and modern aesthetics
+            to create timeless spaces. Whether you're transforming your home, office, or retreat, our goal is to
+            inspire comfort, clarity, and peace in every detail.
+          </p>
+          <p>
+            Our online portfolio showcases carefully curated collections of our work — from cozy living rooms to minimalist outdoor spaces.
+            Explore our Watch section to see our designs come alive in motion.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <p>&copy; 2025 Serenity. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

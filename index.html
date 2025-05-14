@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--  This is the Meta settings for character encoding and responsive layout -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Serenity | Luxury Interior Design</title>
+
+  <!-- This is the  Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!--  And this is the Internal CSS styles -->
+  <style>
+    /* Root variables for color palette */
+    :root {
+      --primary: #fafaf9;
+      --primary-dark: #dfd9d9;
+      --secondary: #8B786D;
+      --accent: #968f8f;
+      --text-light: #ffffff;
+      --text-dark: #0e0d0c;
+    }
+
+    /* Reset default margins and enable smooth scrolling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    /* Body default styles */
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    /* Heading font styles */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 1000;
+    }
+
+    /* Container class for consistent width and centering */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header styling */
+    header {
+      background-color: var(--primary-dark);
+      padding: 30px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /*  This is the Flexbox for header container */
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Logo text styling */
+    .logo {
+      font-size: 2rem;
+      letter-spacing: 3px;
+    }
+
+    /* Navigation links */
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Mobile menu icon styling, hidden on desktop */
+    .mobile-menu {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Hero section styles (carousel/slider) */
+    .hero {
+      position: relative;
+      height: 85vh;
+      overflow: hidden;
+    }
+
+    /* Individual slide styling */
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Active slide visibility */
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Slide image styling */
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Dark overlay on slides */
+    .slide::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Slide text captions */
+    .slide-caption {
+      position: absolute;
+      bottom: 25%;
+      left: 10%;
+      color: var(--text-light);
+      max-width: 500px;
+      animation: fadeUp 2s ease forwards;
+    }
+
+    /* Text fade-up animation */
+    @keyframes fadeUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .slide-caption h2 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    /* Call-to-action button styling */
+    .cta-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: var(--accent);
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #e9daaf;
+      transform: translateY(-2px);
+    }
+
+    /* Carousel navigation buttons */
+    .carousel-prev, .carousel-next {
+      position: absolute;
+      top: 50%;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 18px;
+      cursor: pointer;
+      z-index: 20;
+      border-radius: 50%;
+    }
+
+    .carousel-prev { left: 20px; }
+    .carousel-next { right: 20px; }
+
+    /* Featured content section */
+    .featured-content {
+      padding: 60px 0;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .featured-content.visible {
+      opacity: 1;
+    }
+
+    .filter-tag {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .featured-article h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    /* Partners section */
+    .shop-partners {
+      background-color: var(--primary);
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    /* Grid layout for partners' logos */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .partner-grid img {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 8px;
+      transition: 0.4s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .partner-grid img:hover {
+      filter: grayscale(100%);
+      transform: scale(1.05);
+    }
+
+    /* Footer section */
+    footer {
+      background-color: var(--primary-dark);
+      padding: 50px 0 20px;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    /* Footer copyright text */
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-dark);
+    }
+
+    /* Responsive styles for mobile devices */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--primary-dark);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+        color: var(--text-dark);
+      }
+
+      .hero {
+        height: 70vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation header -->
+  <header>
+    <div class="container">
+      <h1 class="logo">Serenity</h1>
+      <nav>
+        <ul class="nav-links">
+          <!-- Navigation links -->
+          <li><a href="read.html">READ</a></li>
+          <li><a href="watch.html">WATCH</a></li>
+          <li><a href="shop.html">SHOP</a></li>
+          <li><a href="portfolio.html">PORTFOLIO</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+      </nav>
+      <!-- Mobile menu icon -->
+      <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+    </div>
+  </header>
+
+  <!-- Hero/Carousel section -->
+  <section class="hero">
+    <div class="carousel">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <img src="img/img/main page.jpg" alt="Luxury living room">
+        <div class="slide-caption">
+          <h2>Furnishings & Homewares</h2>
+          <a href="shop.html" class="cta-button">SHOP Serenity</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <img src="img/img/living  room main.jpeg" alt="Modern Living Room">
+        <div class="slide-caption">
+          <h2>Get the Serenity Look</h2>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel navigation buttons -->
+    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <!-- Featured content/article section -->
+  <section class="featured-content">
+    <div class="container">
+      <div class="filter-tag">07 MARCH — READ, Living room</div>
+      <div class="featured-article">
+        <h2>The Modern Interior: Art, Function, and Style</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="read.html" class="cta-button">READ FULL ARTICLE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners section -->
+  <section class="shop-partners">
+    <div class="container">
+      <h2>Our Exclusive Partners</h2>
+      <div class="partner-grid">
+        <img src="img/img/partner 1.jpeg" alt="Partner 1">
+        <img src="img/img/partner2.jpeg" alt="Partner 2">
+        <img src="img/img/partner 3.jpeg" alt="Partner 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer section -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Serenity</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Interior Design</a>
+          <a href="#">Custom Furniture</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Serenity Interiors. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for carousel & menu toggle -->
+  <script>
+    // Carousel slide controls
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    document.querySelector('.carousel-next').onclick = () => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide+1)%slides.length;
+      slides[currentSlide].classList.add('active');
+    };
+
+    document.querySelector('.carousel-prev').onclick = () => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide-1+slides.length)%slides.length;
+      slides[currentSlide].classList.add('active');
+    };
+
+    // Mobile menu toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.onclick = () => {
+      navLinks.classList.toggle('open');
+    };
+
+    // Fade in featured content on scroll
+    window.addEventListener('scroll', () => {
+      const featured = document.querySelector('.featured-content');
+      if (window.scrollY > 300) {
+        featured.classList.add('visible');
+      }
+    });
+  </script>
+
+</body>
+</html>

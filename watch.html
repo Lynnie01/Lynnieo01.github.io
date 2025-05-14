@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta tags for character set and responsive layout -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Page title -->
+  <title>Watch Serenity | Serenity Interiors</title>
+
+  <style>
+    /* Reset default browser margin, padding, and set box-sizing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* General body styling */
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+    }
+
+    /* Navbar container styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Brand/logo styling */
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+      text-decoration: none;
+    }
+
+    /* Navigation links list styling */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Navigation link individual styling */
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    /* Active nav link color styling */
+    .nav-links li a.active {
+      color: #b89c86;
+    }
+
+    /* Main watch section styling */
+    .watch-section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    /* Title styling for the video section */
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Description text styling under title */
+    .section-description {
+      font-size: 1.15rem;
+      color: #777;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    /* Video container styling */
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Video element styling */
+    .watch-video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    /* Zoom effect when hovering on video */
+    .watch-video:hover {
+      transform: scale(1.01);
+    }
+
+    /* Footer styling */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #f0f0f0;
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- This is the  Navigation bar -->
+  <header>
+    <nav class="navbar">
+      <!-- Logo/brand link -->
+      <a href="index.html" class="logo">Serenity</a>
+
+      <!-- Navigation menu -->
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="watch.html" class="active">Watch</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Watch section with video -->
+    <section class="watch-section">
+      <h1 class="section-title">Watch Serenity</h1>
+      <p class="section-description">
+        Immerse yourself in peaceful spaces that tell stories of calm, beauty, and effortless living.
+        Let every frame ease your mind and soothe your soul.
+      </p>
+
+      <!-- Video container with video player -->
+      <div class="video-container">
+        <video autoplay loop playsinline controls class="watch-video">
+          <!-- Video source file -->
+          <source src="vid/serenity vid.mp4" type="video/mp4">
+          <!-- Fallback message if video doesn't load -->
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <p>&copy; 2025 Serenity Interiors. All rights reserved.</p>
+  </footer>
+
+</body>
+</html> 

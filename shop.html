@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serenity Shop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #f9f7f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .shop-section {
+      padding: 60px 20px;
+      background-color: #f9f7f5;
+    }
+
+    .shop-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c2c2c;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      color: #a8895c;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      background: #b2b1b0;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background: #bbbbba;
+    }
+
+    /* Cart section styling */
+    .cart-section {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .cart-heading {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      color: #2c2c2c;
+    }
+
+    .cart-items {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .cart-items li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    .cart-total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #a8895c;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Shop Section Start -->
+  <section class="shop-section">
+    <div class="container">
+
+      <h1 class="shop-heading">Serenity Shop</h1>
+
+      <div class="product-grid">
+
+        <!-- Product Cards -->
+        <div class="product-card">
+          <img src="img/img/neutral sofa.jpeg" alt="Neutral Sofa">
+          <h2 class="product-title">Neutral 3-Seater Sofa</h2>
+          <p class="product-price">AED 3250</p>
+          <p class="product-description">Cloud-soft, linen blend sofa in ivory beige, for minimal elegant lounging.</p>
+          <a href="#" class="buy-btn" onclick="event.preventDefault(); addToCart('Neutral 3-Seater Sofa', 3250)">Add to Cart</a>
+        </div>
+
+        <div class="product-card">
+          <img src="img/img/Oak Dining Table.jpeg" alt="Oak Dining Table">
+          <h2 class="product-title">Solid Oak Dining Table</h2>
+          <p class="product-price">AED 5700</p>
+          <p class="product-description">Natural oak wood dining table blending rustic charm with modern simplicity.</p>
+          <a href="#" class="buy-btn" onclick="event.preventDefault(); addToCart('Solid Oak Dining Table', 5700)">Add to Cart</a>
+        </div>
+
+        <div class="product-card">
+          <img src="img/img/Bouclé Accent Chair.jpeg" alt="Bouclé Accent Chair">
+          <h2 class="product-title">Bouclé Accent Chair</h2>
+          <p class="product-price">AED 1650</p>
+          <p class="product-description">Plush, textured bouclé chair in off-white — perfect for cozy reading nooks.</p>
+          <a href="#" class="buy-btn" onclick="event.preventDefault(); addToCart('Bouclé Accent Chair', 1650)">Add to Cart</a>
+        </div>
+
+        <div class="product-card">
+          <img src="img/img/modern coffee table.jpeg" alt="Modern Coffee Table">
+          <h2 class="product-title">Modern Coffee Table</h2>
+          <p class="product-price">AED 2300</p>
+          <p class="product-description">Minimalist coffee table with a round travertine-style top and oak base.</p>
+          <a href="#" class="buy-btn" onclick="event.preventDefault(); addToCart('Modern Coffee Table', 2300)">Add to Cart</a>
+        </div>
+
+        <div class="product-card">
+          <img src="img/img/oak bed frame.jpeg" alt="Oak Bed Frame">
+          <h2 class="product-title">Oak Platform Bed Frame</h2>
+          <p class="product-price">AED 6800</p>
+          <p class="product-description">Clean, modern oak bed frame with soft neutral finish for serene bedrooms.</p>
+          <a href="#" class="buy-btn" onclick="event.preventDefault(); addToCart('Oak Platform Bed Frame', 6800)">Add to Cart</a>
+        </div>
+
+        <div class="product-card">
+          <img src="img/img/lamp.jpeg" alt="Lamp">
+          <h2 class="product-title">Minimalist lamp</h2>
+          <p class="product-price">AED 780</p>
+          <p class="product-description">Simple wooden lamp with natural finish with a golden touch.</p>
+          <a href="#" class="buy-btn" onclick="event.preventDefault(); addToCart('Minimalist lamp', 780)">Add to Cart</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <h2 class="cart-heading">Your Cart</h2>
+    <ul id="cart-items" class="cart-items"></ul>
+    <p class="cart-total" id="cart-total">Total: AED 0</p>
+  </section>
+
+  <script>
+    // Initialize total amount
+    let totalAmount = 0;
+
+    // Function to add an item to the cart
+    function addToCart(productName, productPrice) {
+      // Get cart items list
+      const cartItems = document.getElementById('cart-items');
+
+      // Create a new list item for the added product
+      const listItem = document.createElement('li');
+      listItem.textContent = `${productName} - AED ${productPrice}`;
+
+      // Append the new item to the cart list
+      cartItems.appendChild(listItem);
+
+      // Update the total amount
+      totalAmount += productPrice;
+      document.getElementById('cart-total').textContent = `Total: AED ${totalAmount}`;
+    }
+  </script>
+
+</body>
+</html>
